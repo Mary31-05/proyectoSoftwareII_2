@@ -1,11 +1,15 @@
-package co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models;
+package co.edu.unicauca.apiusuarios.core.fachadaServices.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter @AllArgsConstructor
-public class RolEntity {
+public class RolDTO {
     private Integer id;
     private String nombre;
+
+    public RolDTO() {
+        
+    } 
 }

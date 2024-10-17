@@ -1,16 +1,16 @@
 package co.edu.unicauca.apiusuarios.core.fachadaServices.DTO;
 
-import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models.RolEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter @AllArgsConstructor
 public class UsuarioDTO {
-    private Integer Id;
-    private String FullName;
+    private Integer id;
+    private String nombre;
+    private String apellido;
     private String correo;
-    private RolEntity rol;
+    private RolDTO rol;
 
     public UsuarioDTO() {
 

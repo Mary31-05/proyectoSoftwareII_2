@@ -8,4 +8,8 @@ import lombok.Setter;
 public class RolEntity {
     private Integer id;
     private String nombre;
+
+    public RolEntity(){
+        
+    }
 }

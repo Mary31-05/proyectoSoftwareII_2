@@ -37,7 +37,7 @@ public class RolServiceImpl implements IRolServicie {
 
     @Override
     public RolDTO findById(Integer id) {
-        RolEntity objEntity = this.servicioAccesoBaseDatos.findEntity(id);
+        RolEntity objEntity = this.servicioAccesoBaseDatos.findById(id);
         RolDTO rolDTO = this.modelMapper.map(objEntity, RolDTO.class);
         return rolDTO;
     }

@@ -7,7 +7,6 @@ import lombok.Setter;
 @Getter @Setter @AllArgsConstructor
 public class RolDTO {
     private Integer id;
-    private String nombre;
 
     public RolDTO() {
         

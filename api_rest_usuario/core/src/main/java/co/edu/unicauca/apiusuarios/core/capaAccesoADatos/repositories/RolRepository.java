@@ -30,7 +30,7 @@ public class RolRepository {
         return objRol;
     }
 
-    public RolEntity findEntity(Integer id){
+    public RolEntity findById(Integer id){
         System.out.println("Invocando a consultar un rol");
         RolEntity objRol = null;
 

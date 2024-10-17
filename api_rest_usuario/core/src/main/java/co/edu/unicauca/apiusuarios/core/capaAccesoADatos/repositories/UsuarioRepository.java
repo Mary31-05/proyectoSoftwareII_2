@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models.RolEntity;
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models.UsuarioEntity;
-import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuarioDTO;
 
 @Repository
 public class UsuarioRepository {

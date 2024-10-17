@@ -1,5 +1,6 @@
 package co.edu.unicauca.apiconferencias.core.capaAccesoADatos.models;
 
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,9 @@ import lombok.Setter;
 public class ConferenciaEntity {
     private Integer id;
     private String nombre;
-    private Integer cantArticulos;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private String ubicacion;
 
     public ConferenciaEntity(){
     

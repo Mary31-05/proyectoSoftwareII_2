@@ -37,7 +37,6 @@ public class ArticuloServiceImpl implements IArticuloService {
 		ArticuloDTO ArticuloDTO = this.modelMapper.map(objArticuloEntity, ArticuloDTO.class);
 		return ArticuloDTO;
     }
-    
     @Override
     public ArticuloDTO exist(Integer id) {
         System.out.println("Invocando a consultar un Articulo");

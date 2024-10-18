@@ -64,10 +64,7 @@ public class ConferenciaRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
-    @GetMapping("/articulos/exist/{id}")
-    public Boolean existeArticulo(@PathVariable Integer id) {
-        return ConferenciaService.exist(id) != null;
-    }
+
 }
 
 

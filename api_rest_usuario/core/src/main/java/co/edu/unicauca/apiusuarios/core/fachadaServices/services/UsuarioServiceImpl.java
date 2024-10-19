@@ -11,7 +11,8 @@ import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models.RolEntity;
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models.UsuarioEntity;
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.repositories.RolRepository;
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.repositories.UsuarioRepository;
-import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuarioDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.CRUDUsuariosDTO.UsuarioDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuariosConConferenciasDTO.ConferenciaDTO;
 
 @Service
 public class UsuarioServiceImpl implements IUSuarioService {
@@ -21,6 +22,9 @@ public class UsuarioServiceImpl implements IUSuarioService {
 
     @Autowired
     private RolRepository servicioAccesoDatosRol;
+
+    @Autowired
+    private ConferenciasService servicioConsumirObtencionConferencias;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -68,5 +72,12 @@ public class UsuarioServiceImpl implements IUSuarioService {
     @Override
     public boolean delete(Integer id) {
         return this.servicioAccesoBaseDatos.delete(id);
+    }
+
+    @Override
+    public List<ConferenciaDTO> ListarConferenciasDeUsuario(Integer idUsuario) {
+        List<ConferenciaDTO> listaConferenciasDelUsuario;
+        listaConferenciasDelUsuario = this.servicioConsumirObtencionConferencias.obtenerConferenciasDeUsuario(idUsuario);
+        return listaConferenciasDelUsuario;
     }
 }

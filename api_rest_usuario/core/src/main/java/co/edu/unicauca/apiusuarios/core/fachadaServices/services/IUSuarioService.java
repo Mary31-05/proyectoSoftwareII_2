@@ -2,7 +2,8 @@ package co.edu.unicauca.apiusuarios.core.fachadaServices.services;
 
 import java.util.List;
 
-import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuarioDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.CRUDUsuariosDTO.UsuarioDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuariosConConferenciasDTO.ConferenciaDTO;
 
 public interface IUSuarioService {
     public List<UsuarioDTO> findAll();
@@ -10,4 +11,5 @@ public interface IUSuarioService {
     public UsuarioDTO save(UsuarioDTO usuario) throws IllegalAccessException;
     public UsuarioDTO update(Integer id, UsuarioDTO usuario);
     public boolean delete(Integer id);
+    public List<ConferenciaDTO> ListarConferenciasDeUsuario(Integer idUsuario);
 }

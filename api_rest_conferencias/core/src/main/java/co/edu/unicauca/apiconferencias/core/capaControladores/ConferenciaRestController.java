@@ -66,10 +66,6 @@ public class ConferenciaRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 524c8acd6410441bc454aa79aae97a0dcfab6665
 }
 
 

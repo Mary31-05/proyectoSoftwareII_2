@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.apiconferencias.core.fachadaServices.DTO.ConferenciaDTO;
@@ -30,20 +31,21 @@ public class ConferenciaRestController {
     public List<ConferenciaDTO> listarConferencias() {
 		return ConferenciaService.findAll();
     }
-
+    
     @GetMapping("/conferencias/{id}")
-	public ConferenciaDTO consultarArticulo(@PathVariable Integer id) {
+	public ConferenciaDTO consultarConferencia(@PathVariable Integer id) {
 		ConferenciaDTO objConferencia = null;
 		objConferencia = ConferenciaService.findById(id);
 		return objConferencia;
 	}
 
     @PostMapping("/conferencia")
-	public ConferenciaDTO crearConferencia(@RequestBody ConferenciaDTO conferencia) {
-		ConferenciaDTO objConferencia = null;
-		objConferencia = ConferenciaService.save(conferencia);
+	public ConferenciaDTO crearConferencia(@RequestBody ConferenciaDTO conferencia, @RequestParam Integer idUsuario) {
+        ConferenciaDTO objConferencia = null;
+		objConferencia = ConferenciaService.save(conferencia, idUsuario);
 		return objConferencia;
 	}
+
     @PutMapping("/conferencia/{id}")
     public ResponseEntity<ConferenciaDTO> actualizarConferencia(@PathVariable Integer id, @RequestBody ConferenciaDTO conferencia) {
         ConferenciaDTO actualizado = ConferenciaService.update(id, conferencia);
@@ -63,10 +65,6 @@ public class ConferenciaRestController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
-    }
-    @GetMapping("/articulos/exist/{id}")
-    public Boolean existeArticulo(@PathVariable Integer id) {
-        return ConferenciaService.exist(id) != null;
     }
 }
 

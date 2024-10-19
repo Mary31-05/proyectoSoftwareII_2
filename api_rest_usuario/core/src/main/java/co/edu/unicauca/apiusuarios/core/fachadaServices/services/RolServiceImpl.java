@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.models.RolEntity;
 import co.edu.unicauca.apiusuarios.core.capaAccesoADatos.repositories.RolRepository;
-import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.RolDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.CRUDUsuariosDTO.RolDTO;
 
 @Service
 public class RolServiceImpl implements IRolServicie {

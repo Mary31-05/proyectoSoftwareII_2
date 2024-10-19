@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.RolDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.CRUDUsuariosDTO.RolDTO;
 import co.edu.unicauca.apiusuarios.core.fachadaServices.services.IRolServicie;
 import org.springframework.web.bind.annotation.PutMapping;
 

@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuarioDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.CRUDUsuariosDTO.UsuarioDTO;
+import co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuariosConConferenciasDTO.ConferenciaDTO;
 import co.edu.unicauca.apiusuarios.core.fachadaServices.services.IUSuarioService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,8 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
-
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -29,6 +29,11 @@ public class UsuarioRestController {
     @GetMapping("/usuarios")
     public List<UsuarioDTO> listarUsuarios() {
         return usuarioService.findAll();
+    }
+
+    @GetMapping("/usuarios/conferencias/{idUsuario}")
+    public List<ConferenciaDTO> listarUsuarioConSusConferencias(@PathVariable Integer idUsuario) {
+        return usuarioService.ListarConferenciasDeUsuario(idUsuario);
     }
 
     @GetMapping("/usuarios/{id}")

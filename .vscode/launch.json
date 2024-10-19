@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CoreApplication",
+            "request": "launch",
+            "mainClass": "co.edu.unicauca.apiconferencias.core.CoreApplication",
+            "projectName": "co.edu.unicauca.apiconferencias-core"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-CoreApplication<co.edu.unicauca.apiusuarios-core>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

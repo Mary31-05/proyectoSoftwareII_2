@@ -51,6 +51,8 @@ public class ArticuloServiceImpl implements IArticuloService {
         }
     }
 
+    
+    /* 
     @Override
     public ArticuloDTO save(ArticuloDTO articulo, Integer idUsuario) {
         // Validar rol del usuario
@@ -61,6 +63,16 @@ public class ArticuloServiceImpl implements IArticuloService {
 		ArticuloEntity objArticuloEntity = this.servicioAccesoBaseDatos.save(articuloEntity);
 		ArticuloDTO articuloDTO = this.modelMapper.map(objArticuloEntity, ArticuloDTO.class);
 		return articuloDTO;
+    }
+    */
+    public ArticuloDTO save(ArticuloDTO articulo, Integer idUsuario) {
+        // Validar rol del usuario
+        if (!servicioAccesoBaseDatosUsuario.validarRol(idUsuario, "AUTOR")) {
+            throw new RuntimeException("El usuario no tiene permisos para subir artículos");
+        }
+        ArticuloEntity articuloEntity = this.modelMapper.map(articulo, ArticuloEntity.class);
+        ArticuloEntity objArticuloEntity = this.servicioAccesoBaseDatos.save(articuloEntity);
+        return this.modelMapper.map(objArticuloEntity, ArticuloDTO.class);
     }
 
     @Override

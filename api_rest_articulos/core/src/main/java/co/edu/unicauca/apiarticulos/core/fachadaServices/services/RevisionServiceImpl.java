@@ -78,4 +78,11 @@ public class RevisionServiceImpl implements IRevisionService{
         RevisionDTO RevisionDTO = this.modelMapper.map(revisionConComentario, RevisionDTO.class);
         return RevisionDTO;
     }
+
+    @Override
+    public RevisionDTO actualizarEstado(Integer idRevision, String estado) {
+        RevisionEntity revisionActulizada = this.servicioAccesoBaseDatos.actualizarEstado(idRevision, estado);
+        RevisionDTO revisionDTO = this.modelMapper.map(revisionActulizada, RevisionDTO.class);
+        return revisionDTO;
+    }
 }

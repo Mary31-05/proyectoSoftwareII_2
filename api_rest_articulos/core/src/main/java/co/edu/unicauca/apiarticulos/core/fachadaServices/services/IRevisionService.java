@@ -11,4 +11,5 @@ public interface IRevisionService {
 	public RevisionDTO update(Integer id, RevisionDTO Revision);
 	public boolean delete(Integer id);
 	public RevisionDTO agregarComentario(Integer idRevision, Integer idEvaluador, String comentario);
+	public RevisionDTO actualizarEstado(Integer idRevision, String estado);
 }

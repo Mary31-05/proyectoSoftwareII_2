@@ -53,8 +53,7 @@ public class RevisionRestController {
         return revisionService.delete(id);
     }
 
-    
-    @GetMapping("/articulos/evaluar")
+    @PutMapping("revisiones/{id}/comentario")
     public ResponseEntity<RevisionDTO> agregarComentario(@PathVariable Integer id, @RequestBody String comentario, @RequestParam Integer idUsuario) {
         RevisionDTO revisionConComentario = revisionService.agregarComentario(id, id, comentario);
         if (revisionConComentario != null)
@@ -62,4 +61,14 @@ public class RevisionRestController {
         else 
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
+
+    @PutMapping("revisiones/{id}/estado")
+    public ResponseEntity<RevisionDTO> actualizarEstado(@PathVariable Integer id, @RequestBody String estado) {
+        RevisionDTO revisionActualizada = revisionService.actualizarEstado(id, estado);
+        if (revisionActualizada != null)
+            return ResponseEntity.ok(revisionActualizada);
+        else 
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
 }

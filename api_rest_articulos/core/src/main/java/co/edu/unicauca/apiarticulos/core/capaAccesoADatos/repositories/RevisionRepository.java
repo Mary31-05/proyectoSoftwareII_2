@@ -64,5 +64,20 @@ public class RevisionRepository {
         }
         return objRevision;
     } 
+
+    public RevisionEntity actualizarEstado(Integer idRevision, String estado){
+        RevisionEntity objRevision = null;
+
+        for (int i = 0; i < this.listaDeRevisiones.size(); i++) {
+            if (this.listaDeRevisiones.get(i).getId().equals(idRevision)) {
+                RevisionEntity revisionObtenida = this.listaDeRevisiones.get(i);
+                revisionObtenida.setEstado(estado);
+                this.listaDeRevisiones.set(i, revisionObtenida);
+                objRevision = revisionObtenida;
+                break;
+            }
+        }
+        return objRevision;
+    }
 }
 

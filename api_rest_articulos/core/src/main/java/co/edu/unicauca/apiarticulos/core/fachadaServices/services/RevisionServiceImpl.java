@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.apiarticulos.core.capaAccesoADatos.models.RevisionEntity;
 import co.edu.unicauca.apiarticulos.core.capaAccesoADatos.repositories.RevisionRepository;
 import co.edu.unicauca.apiarticulos.core.fachadaServices.DTO.RevisionDTO;
 
+@Service
 public class RevisionServiceImpl implements IRevisionService{
     private RevisionRepository servicioAccesoBaseDatos;
     private ModelMapper modelMapper;

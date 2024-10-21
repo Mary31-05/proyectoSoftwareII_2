@@ -39,7 +39,7 @@ public class RevisionRestController {
     @PostMapping("/revisiones")
     public RevisionDTO crearRevision(@RequestBody RevisionDTO revision, @RequestParam Integer idUsuario) {
         RevisionDTO objRevision = null;
-        objRevision = revisionService.save(objRevision, idUsuario);
+        objRevision = revisionService.save(revision, idUsuario);
         return objRevision;
     }
 

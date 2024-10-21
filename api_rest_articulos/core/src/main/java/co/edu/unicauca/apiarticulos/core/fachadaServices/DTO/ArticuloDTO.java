@@ -17,6 +17,7 @@ public class ArticuloDTO {
     private List<Integer> autores;
     private ConferenciaDTO conferencia;
 
-    public ArticuloDTO(){
+    public ArticuloDTO() {
+        
     } 
 }

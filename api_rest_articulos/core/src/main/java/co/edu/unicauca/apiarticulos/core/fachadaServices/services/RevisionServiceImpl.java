@@ -46,7 +46,8 @@ public class RevisionServiceImpl implements IRevisionService{
 
         for (Integer idEvaluador : revision.getEvaluadores()) {
             if (!servicioAccesoBaseDatosUsuario.validarRol(idUsuario, "EVALUADOR"))
-                throw new RuntimeException("El evaluador con ID " + idEvaluador + " no puede es un EVALUADOR"); 
+                throw new RuntimeException("El evaluador con ID " + idEvaluador + 
+                                                " no puede ser asignado ya que no es un EVALUADOR"); 
         }
 
         RevisionEntity RevisionEntity = this.modelMapper.map(revision, RevisionEntity.class);

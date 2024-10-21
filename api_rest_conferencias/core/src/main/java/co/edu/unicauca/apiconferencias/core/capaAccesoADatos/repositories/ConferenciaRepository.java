@@ -35,37 +35,6 @@ public class ConferenciaRepository {
         return objConferencia;
     }
 
-	// Esto es igual a el de arriba jaja
-	/* 
-	public boolean existeConferencia(Integer id) {
-        for (ConferenciaEntity conferencia : listaDeConferencias) {
-            if (conferencia.getId().equals(id)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public ConferenciaEntity exist(Integer id) {
-        System.out.println("Invocando a consultar una conferencia");
-
-        ConferenciaEntity objConferencia = null;
-
-        if (existeConferencia(id)) {
-            for (ConferenciaEntity conferencia : listaDeConferencias) {
-                if (conferencia.getId().equals(id)) {
-                    objConferencia = conferencia;
-                    break;
-                }
-            }
-        } else {
-            System.out.println("La conferencia con ID " + id + " no fue encontrada.");
-        }
-
-        return objConferencia;
-    }
-	*/
-
 	public ConferenciaEntity save(ConferenciaEntity conferencia) {
 		System.out.println("Invocando a almacenar una conferencia");
 		ConferenciaEntity objConferencia = null;
@@ -88,6 +57,26 @@ public class ConferenciaRepository {
 		return objConferencias;
 	}
 
+	public ConferenciaEntity agregarArticulo(Integer id, Integer idArticulo) {
+		System.out.println("Invocando a agregar un articulo");
+		ConferenciaEntity objConferencia = null;
+
+		for (int i = 0; i < this.listaDeConferencias.size(); i++) {
+			if (this.listaDeConferencias.get(i).getId() == id) {
+				ConferenciaEntity conferenciaObtenida = this.listaDeConferencias.get(i);
+
+				if (!conferenciaObtenida.getArticulos().contains(idArticulo)) {
+                    conferenciaObtenida.getArticulos().add(idArticulo);
+                }
+
+				this.listaDeConferencias.set(i, conferenciaObtenida);
+				objConferencia = conferenciaObtenida;
+				break;
+			}
+		}
+		return objConferencia;
+	}
+
 	public boolean delete(Integer id) {
 		System.out.println("Invocando a eliminar una conferencia");
 		boolean bandera = false;
@@ -103,16 +92,16 @@ public class ConferenciaRepository {
 	}
 
 	private void cargarConferencias() {
-		ConferenciaEntity objConferencias1 = new ConferenciaEntity(1, "IA", LocalDate.of(2024, 10, 20), LocalDate.of(2024, 10, 22), "Auditorio A");
+		ConferenciaEntity objConferencias1 = new ConferenciaEntity(1, "IA", LocalDate.of(2024, 10, 20), LocalDate.of(2024, 10, 22), "Auditorio A", new ArrayList<Integer>());
         listaDeConferencias.add(objConferencias1);
 
-        ConferenciaEntity objConferencias2 = new ConferenciaEntity(2, "Desarrollo Sostenible", LocalDate.of(2024, 11, 5), LocalDate.of(2024, 11, 7), "Salón B");
+        ConferenciaEntity objConferencias2 = new ConferenciaEntity(2, "Desarrollo Sostenible", LocalDate.of(2024, 11, 5), LocalDate.of(2024, 11, 7), "Salón B", new ArrayList<Integer>());
         listaDeConferencias.add(objConferencias2);
 
-        ConferenciaEntity objConferencias3 = new ConferenciaEntity(3, "Innovación Tecnológica", LocalDate.of(2024, 11, 15), LocalDate.of(2024, 11, 17), "Sala C");
+        ConferenciaEntity objConferencias3 = new ConferenciaEntity(3, "Innovación Tecnológica", LocalDate.of(2024, 11, 15), LocalDate.of(2024, 11, 17), "Sala C", new ArrayList<Integer>());
         listaDeConferencias.add(objConferencias3);
 
-        ConferenciaEntity objConferencias4 = new ConferenciaEntity(4, "Educación en la Era Digital", LocalDate.of(2024, 12, 1), LocalDate.of(2024, 12, 3), "Sala D");
+        ConferenciaEntity objConferencias4 = new ConferenciaEntity(4, "Educación en la Era Digital", LocalDate.of(2024, 12, 1), LocalDate.of(2024, 12, 3), "Sala D", new ArrayList<Integer>());
         listaDeConferencias.add(objConferencias4);
 	}
 }

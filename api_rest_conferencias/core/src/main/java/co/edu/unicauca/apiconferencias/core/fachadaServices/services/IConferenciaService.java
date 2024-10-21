@@ -8,5 +8,6 @@ public interface IConferenciaService {
     public ConferenciaDTO findById(Integer id);
 	public ConferenciaDTO save(ConferenciaDTO conferencia, Integer idUsuario);
 	public ConferenciaDTO update(Integer id, ConferenciaDTO conferencia);
+	public ConferenciaDTO agregarArticulo(Integer idConferencia, Integer idArticulo);
 	public boolean delete(Integer id);
 }

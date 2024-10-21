@@ -12,4 +12,5 @@ public interface IUSuarioService {
     public UsuarioDTO update(Integer id, UsuarioDTO usuario);
     public boolean delete(Integer id);
     public List<ConferenciaDTO> ListarConferenciasDeUsuario(Integer idUsuario);
+    public boolean validarRol(Integer idUsuario, String rol);
 }

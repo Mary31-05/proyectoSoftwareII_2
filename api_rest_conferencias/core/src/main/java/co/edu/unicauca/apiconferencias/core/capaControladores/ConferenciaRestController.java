@@ -55,6 +55,16 @@ public class ConferenciaRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @PutMapping("/conferencia/{id}/articulo")
+    public ResponseEntity<ConferenciaDTO> agregarArticulo(@PathVariable Integer idConferencia, @RequestBody Integer idArticulo) {
+        ConferenciaDTO actualizado = ConferenciaService.agregarArticulo(idConferencia, idArticulo);
+        if (actualizado != null) {
+            return ResponseEntity.ok(actualizado);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
     
     @DeleteMapping("/conferencia/{id}")
     public ResponseEntity<Boolean> eliminarConferencia(@PathVariable Integer id) {

@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "coreApplication",
+            "request": "launch",
+            "mainClass": "co.edu.unicauca.apiarticulos.coreApplication",
+            "projectName": "co.edu.unicauca.apiarticulos-core"
+        },
+        {
+            "type": "java",
             "name": "CoreApplication",
             "request": "launch",
             "mainClass": "co.edu.unicauca.apiconferencias.core.CoreApplication",

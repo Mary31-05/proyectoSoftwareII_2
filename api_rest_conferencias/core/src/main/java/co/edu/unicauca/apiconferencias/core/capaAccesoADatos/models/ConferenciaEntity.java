@@ -1,6 +1,7 @@
 package co.edu.unicauca.apiconferencias.core.capaAccesoADatos.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ public class ConferenciaEntity {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String ubicacion;
+    private List<Integer> articulos;
 
     public ConferenciaEntity(){
     

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.apiarticulos.core.capaAccesoADatos.models.ArticuloEntity;
+import co.edu.unicauca.apiarticulos.core.fachadaServices.DTO.ConferenciaDTO;
 
 @Repository
 public class ArticuloRepository {
@@ -104,11 +105,13 @@ public class ArticuloRepository {
     }
 
     private void CargarArticulos() {
-        ArticuloEntity objArticulo1 = new ArticuloEntity(1, "IA en la actualidad", "Mary", 1, "Unicauca");
+        ArticuloEntity objArticulo1 = new ArticuloEntity(1, "IA en la actualidad", "Resumen del artículo sobre IA", "IA, Tecnología, Futuro", "Publicado", new ArrayList<>(), new ConferenciaDTO(1));
         this.listaDeArticulos.add(objArticulo1);
-        ArticuloEntity objArticulo2 = new ArticuloEntity(2, "Ingenieria de software", "Camila", 1, "Science Direct");
+
+        ArticuloEntity objArticulo2 = new ArticuloEntity(2, "Ingeniería de software", "Resumen del artículo sobre ingeniería de software", "Software, Ingeniería, Desarrollo", "Publicado", new ArrayList<>(), new ConferenciaDTO(2));
         this.listaDeArticulos.add(objArticulo2);
-        ArticuloEntity objArticulo3 = new ArticuloEntity(3, "Tecnología", "Lina", 1, "Scopus");
+
+        ArticuloEntity objArticulo3 = new ArticuloEntity(3, "Tecnología", "Resumen del artículo sobre tecnología", "Tecnología, Innovación", "Publicado", new ArrayList<>(), new ConferenciaDTO(3));
         this.listaDeArticulos.add(objArticulo3);
     }
 

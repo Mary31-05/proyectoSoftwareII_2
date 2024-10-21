@@ -80,4 +80,10 @@ public class UsuarioServiceImpl implements IUSuarioService {
         listaConferenciasDelUsuario = this.servicioConsumirObtencionConferencias.obtenerConferenciasDeUsuario(idUsuario);
         return listaConferenciasDelUsuario;
     }
+
+    @Override
+    public boolean validarRol(Integer idUsuario, String rol) {
+        UsuarioEntity usuario = this.servicioAccesoBaseDatos.findById(idUsuario);
+        return usuario != null && usuario.getRol().getNombre().equals(rol);
+    }
 }

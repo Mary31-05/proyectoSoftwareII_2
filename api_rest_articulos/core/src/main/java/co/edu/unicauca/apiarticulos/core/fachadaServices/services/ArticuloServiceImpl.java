@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.apiarticulos.core.capaAccesoADatos.models.ArticuloEntity;
@@ -13,14 +14,14 @@ import co.edu.unicauca.apiarticulos.core.fachadaServices.DTO.ArticuloDTO;
 @Service
 public class ArticuloServiceImpl implements IArticuloService {
 
+    @Autowired
     private ArticuloRepository servicioAccesoBaseDatos;
 
-	private ModelMapper modelMapper;
+    @Autowired
+    private UsuarioService servicioAccesoBaseDatosUsuario;  
 
-	public ArticuloServiceImpl(ArticuloRepository servicioAccesoBaseDatos, ModelMapper modelMapper) {
-		this.servicioAccesoBaseDatos = servicioAccesoBaseDatos;
-		this.modelMapper = modelMapper;
-	}
+    @Autowired
+	private ModelMapper modelMapper;
 
     @Override
 	public List<ArticuloDTO> findAll() {
@@ -51,7 +52,11 @@ public class ArticuloServiceImpl implements IArticuloService {
     }
 
     @Override
-    public ArticuloDTO save(ArticuloDTO articulo) {
+    public ArticuloDTO save(ArticuloDTO articulo, Integer idUsuario) {
+        // Validar rol del usuario
+        if (!servicioAccesoBaseDatosUsuario.validarRol(idUsuario, "AUTOR")) {
+            throw new RuntimeException("El usuario no tiene permisos para subir articulos");
+        }
         ArticuloEntity articuloEntity = this.modelMapper.map(articulo, ArticuloEntity.class);
 		ArticuloEntity objArticuloEntity = this.servicioAccesoBaseDatos.save(articuloEntity);
 		ArticuloDTO articuloDTO = this.modelMapper.map(objArticuloEntity, ArticuloDTO.class);

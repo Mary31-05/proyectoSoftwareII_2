@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.apiarticulos.core.fachadaServices.DTO.ArticuloDTO;
@@ -45,9 +46,9 @@ public class ArticuloRestController {
 
 
     @PostMapping("/articulos")
-	public ArticuloDTO crearArticulo(@RequestBody ArticuloDTO articulo) {
+	public ArticuloDTO crearArticulo(@RequestBody ArticuloDTO articulo, @RequestParam Integer idUsuario) {
 		ArticuloDTO objArticulo = null;
-		objArticulo = ArticuloService.save(articulo);
+		objArticulo = ArticuloService.save(articulo, idUsuario);
 		return objArticulo;
 	}
     @PutMapping("/articulos/{id}")

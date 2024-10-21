@@ -62,4 +62,17 @@ public class ConferenciaServiceImpl implements IConferenciaService{
     public boolean delete(Integer id) {
         return this.servicioAccesoBaseDatos.delete(id);
     }
+
+    @Override
+    public ConferenciaDTO agregarArticulo(Integer idConferencia, Integer idArticulo) {
+        ConferenciaEntity ConferenciaEntity = this.servicioAccesoBaseDatos.findById(idConferencia);
+        ConferenciaEntity ConferenciaEntityObtenida = this.servicioAccesoBaseDatos.agregarArticulo(idConferencia, idArticulo);
+        
+        if (idArticulo != null)
+            ConferenciaEntityObtenida.getArticulos().add(idArticulo);
+
+        ConferenciaEntity ConferenciaEntityActualizado = this.servicioAccesoBaseDatos.update(idConferencia, ConferenciaEntity);
+        ConferenciaDTO ConferenciaDTO = this.modelMapper.map(ConferenciaEntityActualizado, ConferenciaDTO.class);
+        return ConferenciaDTO; 
+    }
 }

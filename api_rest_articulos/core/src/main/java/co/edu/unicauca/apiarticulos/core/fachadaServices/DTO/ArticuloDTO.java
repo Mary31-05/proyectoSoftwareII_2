@@ -14,7 +14,6 @@ public class ArticuloDTO {
     private String titulo;
     private String resumen;
     private String palabrasClave;
-    private String estado;
     private List<Integer> autores;
     private ConferenciaDTO conferencia;
 

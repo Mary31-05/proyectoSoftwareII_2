@@ -11,15 +11,15 @@ public class UsuarioService {
     private WebClient.Builder webClientBuilder;
 
     public boolean validarRol(Integer idUsuario, String rol) {
-        String url = "http://localhost:8080/api/usuarios/" + idUsuario + "/validarRol?rol=" + rol;
+        String url = "http://localhost:8080/api/usuarios/" + idUsuario + "/validarRol?rol="+rol;
 
         Boolean tieneRol = webClientBuilder.build()
-            .get()
-            .uri(url)
-            .retrieve()
-            .bodyToMono(Boolean.class)
-            .block();
-
+                .get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block(); 
+                
         return tieneRol != null && tieneRol;
     }
 }

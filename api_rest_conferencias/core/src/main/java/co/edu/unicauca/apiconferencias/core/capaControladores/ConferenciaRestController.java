@@ -39,14 +39,14 @@ public class ConferenciaRestController {
 		return objConferencia;
 	}
 
-    @PostMapping("/conferencia")
+    @PostMapping("/conferencias")
 	public ConferenciaDTO crearConferencia(@RequestBody ConferenciaDTO conferencia, @RequestParam Integer idUsuario) {
         ConferenciaDTO objConferencia = null;
 		objConferencia = ConferenciaService.save(conferencia, idUsuario);
 		return objConferencia;
 	}
 
-    @PutMapping("/conferencia/{id}")
+    @PutMapping("/conferencias/{id}")
     public ResponseEntity<ConferenciaDTO> actualizarConferencia(@PathVariable Integer id, @RequestBody ConferenciaDTO conferencia) {
         ConferenciaDTO actualizado = ConferenciaService.update(id, conferencia);
         if (actualizado != null) {
@@ -56,7 +56,7 @@ public class ConferenciaRestController {
         }
     }
 
-    @PutMapping("/conferencia/{id}/articulo")
+    @PutMapping("/conferencias/{idConferencia}/articulo")
     public ResponseEntity<ConferenciaDTO> agregarArticulo(@PathVariable Integer idConferencia, @RequestBody Integer idArticulo) {
         ConferenciaDTO actualizado = ConferenciaService.agregarArticulo(idConferencia, idArticulo);
         if (actualizado != null) {
@@ -66,7 +66,7 @@ public class ConferenciaRestController {
         }
     }
     
-    @DeleteMapping("/conferencia/{id}")
+    @DeleteMapping("/conferencias/{id}")
     public ResponseEntity<Boolean> eliminarConferencia(@PathVariable Integer id) {
         ConferenciaDTO ConferenciaActual = ConferenciaService.findById(id);
         if (ConferenciaActual != null) {

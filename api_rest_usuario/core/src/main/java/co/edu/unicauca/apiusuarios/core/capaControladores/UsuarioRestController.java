@@ -73,8 +73,8 @@ public class UsuarioRestController {
         return bandera;
     }
 
-    @GetMapping("/usuarios/{id}/validarRol")
-    public ResponseEntity<Boolean> getMethodName(@RequestParam Integer idUsuario, @RequestParam String rol) {
+    @GetMapping("/usuarios/{idUsuario}/validarRol")
+    public ResponseEntity<Boolean> validarRol(@PathVariable Integer idUsuario, @RequestParam String rol) {
         boolean validarRol = usuarioService.validarRol(idUsuario, rol);
         return ResponseEntity.ok(validarRol);
     }

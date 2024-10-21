@@ -34,8 +34,8 @@ public class ConferenciaServiceImpl implements IConferenciaService{
     @Override
     public ConferenciaDTO findById(Integer id) {
         ConferenciaEntity objConferenciaEntity = this.servicioAccesoBaseDatos.findById(id);
-		ConferenciaDTO ConferenciaDTO = this.modelMapper.map(objConferenciaEntity, ConferenciaDTO.class);
-		return ConferenciaDTO;
+		ConferenciaDTO conferenciaDTO = this.modelMapper.map(objConferenciaEntity, ConferenciaDTO.class);
+		return conferenciaDTO;
     }
 
     @Override
@@ -65,14 +65,8 @@ public class ConferenciaServiceImpl implements IConferenciaService{
 
     @Override
     public ConferenciaDTO agregarArticulo(Integer idConferencia, Integer idArticulo) {
-        ConferenciaEntity ConferenciaEntity = this.servicioAccesoBaseDatos.findById(idConferencia);
-        ConferenciaEntity ConferenciaEntityObtenida = this.servicioAccesoBaseDatos.agregarArticulo(idConferencia, idArticulo);
-        
-        if (idArticulo != null)
-            ConferenciaEntityObtenida.getArticulos().add(idArticulo);
-
-        ConferenciaEntity ConferenciaEntityActualizado = this.servicioAccesoBaseDatos.update(idConferencia, ConferenciaEntity);
-        ConferenciaDTO ConferenciaDTO = this.modelMapper.map(ConferenciaEntityActualizado, ConferenciaDTO.class);
+        ConferenciaEntity conferenciaConArticuloAgregado = this.servicioAccesoBaseDatos.agregarArticulo(idConferencia, idArticulo);
+        ConferenciaDTO ConferenciaDTO = this.modelMapper.map(conferenciaConArticuloAgregado, ConferenciaDTO.class);
         return ConferenciaDTO; 
     }
 }

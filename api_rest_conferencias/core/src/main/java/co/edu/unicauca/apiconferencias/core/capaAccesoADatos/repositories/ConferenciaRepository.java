@@ -62,7 +62,7 @@ public class ConferenciaRepository {
 		ConferenciaEntity objConferencia = null;
 
 		for (int i = 0; i < this.listaDeConferencias.size(); i++) {
-			if (this.listaDeConferencias.get(i).getId() == id) {
+			if (this.listaDeConferencias.get(i).getId().equals(id)) {
 				ConferenciaEntity conferenciaObtenida = this.listaDeConferencias.get(i);
 
 				if (!conferenciaObtenida.getArticulos().contains(idArticulo)) {

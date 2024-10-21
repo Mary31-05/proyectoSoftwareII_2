@@ -43,19 +43,14 @@ public class ArticuloRestController {
 		objArticulo = ArticuloService.findById(id);
 		return objArticulo;
 	}
-
-
-    /*@PostMapping("/articulos")
+    
+    @PostMapping("/articulos")
 	public ArticuloDTO crearArticulo(@RequestBody ArticuloDTO articulo, @RequestParam Integer idUsuario) {
 		ArticuloDTO objArticulo = null;
 		objArticulo = ArticuloService.save(articulo, idUsuario);
 		return objArticulo;
 	}
-        */
-    @PostMapping
-    public ArticuloDTO crearArticulo(@RequestBody ArticuloDTO articulo, @RequestParam Integer idUsuario) {
-        return ArticuloService.save(articulo, idUsuario);
-    }
+    
     @PutMapping("/articulos/{id}")
     public ResponseEntity<ArticuloDTO> actualizarArticulo(@PathVariable Integer id, @RequestBody ArticuloDTO articulo) {
         ArticuloDTO actualizado = ArticuloService.update(id, articulo);
@@ -76,6 +71,7 @@ public class ArticuloRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
+
     @GetMapping("/articulos/exist/{id}")
     public Boolean existeArticulo(@PathVariable Integer id) {
         return ArticuloService.exist(id) != null;

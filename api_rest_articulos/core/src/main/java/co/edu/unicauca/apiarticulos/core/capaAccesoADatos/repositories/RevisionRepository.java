@@ -18,6 +18,19 @@ public class RevisionRepository {
     public List<RevisionEntity> findAll() {
         return this.listaDeRevisiones;
     }
+
+    public RevisionEntity findById(Integer idRevision) {
+        RevisionEntity objRevision = null;
+
+        for (RevisionEntity revision : listaDeRevisiones) {
+            if (revision.getId().equals(idRevision)) {
+                objRevision = revision;
+                break;
+            }
+        }
+        return objRevision;
+    }
+
     public RevisionEntity save(RevisionEntity revision) {
         this.listaDeRevisiones.add(revision);
         return revision;
@@ -36,5 +49,20 @@ public class RevisionRepository {
     public boolean delete(Integer id) {
         return this.listaDeRevisiones.removeIf(revision -> revision.getId().equals(id));
     }
+
+    public RevisionEntity agregarComentario(Integer idRevision, String comentario) {
+        RevisionEntity objRevision = null;
+
+        for (int i = 0; i < this.listaDeRevisiones.size(); i++) {
+            if (this.listaDeRevisiones.get(i).getId().equals(idRevision)) {
+                RevisionEntity revisionObtenida = this.listaDeRevisiones.get(i);
+                revisionObtenida.getComentarios().add(comentario);
+                this.listaDeRevisiones.set(i, revisionObtenida);
+                objRevision = revisionObtenida;
+                break;
+            }
+        }
+        return objRevision;
+    } 
 }
 

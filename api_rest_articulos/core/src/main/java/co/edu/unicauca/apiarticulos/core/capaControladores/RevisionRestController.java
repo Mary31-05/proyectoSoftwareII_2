@@ -35,12 +35,18 @@ public class RevisionRestController {
 		objRevision = revisionService.findById(id);
 		return objRevision;
 	}
-    
+    /* 
     @PostMapping("/revisiones")
     public RevisionDTO crearRevision(@RequestBody RevisionDTO revision, @RequestParam Integer idUsuario) {
         RevisionDTO objRevision = null;
         objRevision = revisionService.save(objRevision, idUsuario);
         return objRevision;
+    }
+    */
+    @PostMapping("/revisiones")
+    public RevisionDTO crearRevision(@RequestBody RevisionDTO revision, @RequestParam Integer idUsuario) {
+    RevisionDTO objRevision = revisionService.save(revision, idUsuario);
+    return objRevision;
     }
 
     @PutMapping("/revisiones/{id}")

@@ -59,9 +59,9 @@ public class RevisionRestController {
         return revisionService.delete(id);
     }
 
-    @PutMapping("revisiones/{id}/comentario")
-    public ResponseEntity<RevisionDTO> agregarComentario(@PathVariable Integer id, @RequestBody String comentario, @RequestParam Integer idUsuario) {
-        RevisionDTO revisionConComentario = revisionService.agregarComentario(id, id, comentario);
+    @PutMapping("revisiones/{idRevision}/comentario")
+    public ResponseEntity<RevisionDTO> agregarComentario(@PathVariable Integer idRevision, @RequestBody String comentario, @RequestParam Integer idUsuario) {
+        RevisionDTO revisionConComentario = revisionService.agregarComentario(idRevision, idUsuario, comentario);
         if (revisionConComentario != null)
             return ResponseEntity.ok(revisionConComentario);
         else 

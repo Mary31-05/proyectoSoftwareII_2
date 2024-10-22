@@ -15,7 +15,7 @@ public class ArticuloEntity {
     private List<Integer> autores;
     private ConferenciaDTO conferencia;
 
-    public ArticuloEntity(){
+    public ArticuloEntity() {
 
     }
 }

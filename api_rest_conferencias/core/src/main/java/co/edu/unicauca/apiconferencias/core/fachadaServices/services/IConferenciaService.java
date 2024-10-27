@@ -1,6 +1,7 @@
 package co.edu.unicauca.apiconferencias.core.fachadaServices.services;
 import java.util.List;
 
+import co.edu.unicauca.apiconferencias.core.capaAccesoADatos.models.ConferenciaEntity;
 import co.edu.unicauca.apiconferencias.core.fachadaServices.DTO.ConferenciaDTO;
 
 /**
@@ -19,6 +20,8 @@ public interface IConferenciaService {
      * @return un objeto ConferenciaDTO que representa la conferencia encontrada o null si no se encuentra.
      */
     public ConferenciaDTO findById(Integer id);
+
+    public ConferenciaDTO findByNombre(String nombre);
 	/**
      * Guarda una nueva conferencia en la base de datos.
      * Requiere que el usuario que realiza la operación tenga el rol de "ORGANIZADOR".

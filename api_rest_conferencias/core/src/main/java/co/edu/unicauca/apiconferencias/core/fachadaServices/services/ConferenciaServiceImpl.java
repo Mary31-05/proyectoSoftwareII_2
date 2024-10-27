@@ -52,6 +52,7 @@ public class ConferenciaServiceImpl implements IConferenciaService{
 		ConferenciaDTO conferenciaDTO = this.modelMapper.map(objConferenciaEntity, ConferenciaDTO.class);
 		return conferenciaDTO;
     }
+    
     /**
      * Guarda una nueva conferencia en la base de datos.
      * Verifica si el usuario tiene permisos de "ORGANIZADOR" antes de realizar la operación.
@@ -111,4 +112,11 @@ public class ConferenciaServiceImpl implements IConferenciaService{
         ConferenciaDTO ConferenciaDTO = this.modelMapper.map(conferenciaConArticuloAgregado, ConferenciaDTO.class);
         return ConferenciaDTO; 
     }
+    @Override
+    public ConferenciaDTO findByNombre(String nombre) {
+        ConferenciaEntity objConferenciaEntity = this.servicioAccesoBaseDatos.findByNombre(nombre);
+		ConferenciaDTO conferenciaDTO = this.modelMapper.map(objConferenciaEntity, ConferenciaDTO.class);
+		return conferenciaDTO;
+    }
+    
 }

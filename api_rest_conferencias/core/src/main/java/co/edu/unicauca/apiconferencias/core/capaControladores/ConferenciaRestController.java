@@ -50,6 +50,7 @@ public class ConferenciaRestController {
 		objConferencia = ConferenciaService.findById(id);
 		return objConferencia;
 	}
+
     /**
      * Endpoint para crear una nueva conferencia.
      *
@@ -111,6 +112,14 @@ public class ConferenciaRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
+
+
+    @GetMapping("/conferencias/nombre/{nombre}")
+	public ConferenciaDTO consultarConferenciaNombre(@PathVariable String nombre) {
+		ConferenciaDTO objConferencia = null;
+		objConferencia = ConferenciaService.findByNombre(nombre);
+		return objConferencia;
+	}
 }
 
 

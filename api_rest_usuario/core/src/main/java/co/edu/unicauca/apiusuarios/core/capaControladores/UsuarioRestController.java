@@ -115,5 +115,13 @@ public class UsuarioRestController {
         boolean validarRol = usuarioService.validarRol(idUsuario, rol);
         return ResponseEntity.ok(validarRol);
     }
+
+    @GetMapping("/usuarios/rol/{idUsuario}")
+    public String consultarRol(@PathVariable Integer idUsuario) {
+        UsuarioDTO objUsuario = null;
+        objUsuario = usuarioService.findById(idUsuario);
+        String nombreRol = objUsuario.getRol().getNombre();
+        return nombreRol;
+    }
     
 }

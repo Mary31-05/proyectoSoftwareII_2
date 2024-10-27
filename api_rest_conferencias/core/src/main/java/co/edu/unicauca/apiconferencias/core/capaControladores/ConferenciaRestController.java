@@ -19,33 +19,57 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
+/**
+ * Controlador REST para gestionar conferencias.
+ * Permite realizar operaciones CRUD sobre conferencias a través de una API REST.
+ */
 @RestController
 @RequestMapping ("/api")
 public class ConferenciaRestController {
 
     @Autowired
 	private IConferenciaService ConferenciaService;
-
+    /**
+     * Endpoint para listar todas las conferencias.
+     *
+     * @return Lista de objetos ConferenciaDTO que representan todas las conferencias.
+     */
     @GetMapping("/conferencias")
     public List<ConferenciaDTO> listarConferencias() {
 		return ConferenciaService.findAll();
     }
-    
+    /**
+     * Endpoint para consultar una conferencia específica por su ID.
+     *
+     * @param id Identificador de la conferencia a consultar.
+     * @return Objeto ConferenciaDTO que representa la conferencia encontrada.
+     */
     @GetMapping("/conferencias/{id}")
 	public ConferenciaDTO consultarConferencia(@PathVariable Integer id) {
 		ConferenciaDTO objConferencia = null;
 		objConferencia = ConferenciaService.findById(id);
 		return objConferencia;
 	}
-
+    /**
+     * Endpoint para crear una nueva conferencia.
+     *
+     * @param conferencia Objeto ConferenciaDTO con los datos de la conferencia a crear.
+     * @param idUsuario Identificador del usuario que crea la conferencia.
+     * @return Objeto ConferenciaDTO que representa la conferencia creada.
+     */
     @PostMapping("/conferencias")
 	public ConferenciaDTO crearConferencia(@RequestBody ConferenciaDTO conferencia, @RequestParam Integer idUsuario) {
         ConferenciaDTO objConferencia = null;
 		objConferencia = ConferenciaService.save(conferencia, idUsuario);
 		return objConferencia;
 	}
-
+    /**
+     * Endpoint para actualizar una conferencia existente.
+     *
+     * @param id Identificador de la conferencia a actualizar.
+     * @param conferencia Objeto ConferenciaDTO con los datos actualizados de la conferencia.
+     * @return Respuesta HTTP con el objeto ConferenciaDTO actualizado y estado OK, o NOT_FOUND si la conferencia no existe.
+     */
     @PutMapping("/conferencias/{id}")
     public ResponseEntity<ConferenciaDTO> actualizarConferencia(@PathVariable Integer id, @RequestBody ConferenciaDTO conferencia) {
         ConferenciaDTO actualizado = ConferenciaService.update(id, conferencia);
@@ -55,7 +79,13 @@ public class ConferenciaRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
+    /**
+     * Endpoint para agregar un artículo a una conferencia específica.
+     *
+     * @param idConferencia Identificador de la conferencia.
+     * @param idArticulo Identificador del artículo a agregar.
+     * @return Respuesta HTTP con el objeto ConferenciaDTO actualizado y estado OK, o NOT_FOUND si la conferencia no existe.
+     */
     @PutMapping("/conferencias/{idConferencia}/articulo")
     public ResponseEntity<ConferenciaDTO> agregarArticulo(@PathVariable Integer idConferencia, @RequestBody Integer idArticulo) {
         ConferenciaDTO actualizado = ConferenciaService.agregarArticulo(idConferencia, idArticulo);
@@ -65,7 +95,12 @@ public class ConferenciaRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-    
+    /**
+     * Endpoint para eliminar una conferencia.
+     *
+     * @param id Identificador de la conferencia a eliminar.
+     * @return Respuesta HTTP con true si se eliminó con éxito y estado OK, o false y NOT_FOUND si la conferencia no existe.
+     */  
     @DeleteMapping("/conferencias/{id}")
     public ResponseEntity<Boolean> eliminarConferencia(@PathVariable Integer id) {
         ConferenciaDTO ConferenciaActual = ConferenciaService.findById(id);

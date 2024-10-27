@@ -7,21 +7,35 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.apiconferencias.core.capaAccesoADatos.models.ConferenciaEntity;
-
+/**
+ * Repositorio para el manejo de las conferencias en memoria.
+ * Permite realizar operaciones CRUD sobre conferencias.
+ */
 @Repository
 public class ConferenciaRepository {
     private ArrayList<ConferenciaEntity> listaDeConferencias;
-
+	/**
+     * Constructor que inicializa la lista de conferencias y carga datos de ejemplo.
+     */
 	public ConferenciaRepository() {
 		this.listaDeConferencias = new ArrayList<ConferenciaEntity>();
 		cargarConferencias();
 	}
-
+	/**
+     * Obtiene la lista completa de conferencias.
+     *
+     * @return Lista de objetos ConferenciaEntity que representan las conferencias disponibles.
+     */
     public List<ConferenciaEntity> findAll() {
 		System.out.println("Invocando a listarConferencias");
 		return this.listaDeConferencias;
 	}
-
+	/**
+     * Busca una conferencia por su ID.
+     *
+     * @param id Identificador de la conferencia a buscar.
+     * @return Objeto ConferenciaEntity que representa la conferencia encontrada, o null si no se encuentra.
+     */
 	public ConferenciaEntity findById(Integer id) {
         System.out.println("Invocando a consultar una conferencia");
         ConferenciaEntity objConferencia = null;
@@ -34,7 +48,12 @@ public class ConferenciaRepository {
         }
         return objConferencia;
     }
-
+	/**
+     * Guarda una nueva conferencia en la lista.
+     *
+     * @param conferencia Objeto ConferenciaEntity a almacenar.
+     * @return ConferenciaEntity que representa la conferencia guardada.
+     */
 	public ConferenciaEntity save(ConferenciaEntity conferencia) {
 		System.out.println("Invocando a almacenar una conferencia");
 		ConferenciaEntity objConferencia = null;
@@ -42,6 +61,13 @@ public class ConferenciaRepository {
 			objConferencia = conferencia;
 		return objConferencia;
 	}
+	/**
+     * Actualiza una conferencia existente en la lista.
+     *
+     * @param id Identificador de la conferencia a actualizar.
+     * @param conferencia Objeto ConferenciaEntity con los datos actualizados.
+     * @return ConferenciaEntity que representa la conferencia actualizada, o null si no se encuentra.
+     */
 
 	public ConferenciaEntity update(Integer id, ConferenciaEntity conferencia) {
 		System.out.println("Invocando a actualizar una conferencia");
@@ -56,6 +82,13 @@ public class ConferenciaRepository {
 		}
 		return objConferencias;
 	}
+	/**
+     * Agrega un artículo a la lista de artículos de una conferencia.
+     *
+     * @param id Identificador de la conferencia.
+     * @param idArticulo Identificador del artículo a agregar.
+     * @return ConferenciaEntity que representa la conferencia actualizada, o null si no se encuentra.
+     */
 
 	public ConferenciaEntity agregarArticulo(Integer id, Integer idArticulo) {
 		System.out.println("Invocando a agregar un articulo");
@@ -76,7 +109,12 @@ public class ConferenciaRepository {
 		}
 		return objConferencia;
 	}
-
+	/**
+     * Elimina una conferencia de la lista por su ID.
+     *
+     * @param id Identificador de la conferencia a eliminar.
+     * @return true si la conferencia se eliminó con éxito, false en caso contrario.
+     */
 	public boolean delete(Integer id) {
 		System.out.println("Invocando a eliminar una conferencia");
 		boolean bandera = false;
@@ -90,6 +128,10 @@ public class ConferenciaRepository {
 		}
 		return bandera;
 	}
+	/**
+     * Carga datos de ejemplo de conferencias en la lista.
+     * Método privado para inicializar la lista con algunos datos.
+     */
 
 	private void cargarConferencias() {
 		ConferenciaEntity objConferencias1 = new ConferenciaEntity(1, "IA", LocalDate.of(2024, 10, 20), LocalDate.of(2024, 10, 22), "Auditorio A", new ArrayList<Integer>());

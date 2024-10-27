@@ -1,3 +1,8 @@
+/**
+ * Controlador REST para gestionar operaciones CRUD sobre roles.
+ * Define endpoints para obtener, crear, actualizar y eliminar roles.
+ * Utiliza el servicio IRolService para realizar las operaciones necesarias.
+ */
 package co.edu.unicauca.apiusuarios.core.capaControladores;
 
 import java.util.List;
@@ -22,26 +27,42 @@ public class RolRestController {
     
     @Autowired
     private IRolServicie rolService;
-
+    /**
+     * Obtiene todos los roles.
+     * @return Lista de roles (RolDTO).
+     */
     @GetMapping("/roles")
     public List<RolDTO> listarRoles(){
         return rolService.findAll();
     }
-
+    /**
+     * Crea un nuevo rol.
+     * @param rol Objeto RolDTO a ser creado.
+     * @return Objeto RolDTO del rol creado.
+     */
     @PostMapping("/roles")
     public RolDTO crearRol(@RequestBody RolDTO rol){
         RolDTO objRol = null;
         objRol = rolService.save(rol);
         return objRol;
     }
-
+    /**
+     * Consulta un rol por su ID.
+     * @param id Identificador único del rol.
+     * @return Objeto RolDTO si se encuentra el rol, o null si no existe.
+     */
     @GetMapping("/roles/{id}")
     public RolDTO consultarRol(@PathVariable Integer id){
         RolDTO objRol = null;
         objRol = rolService.findById(id);
         return objRol;
     }
-
+    /**
+     * Actualiza un rol existente.
+     * @param id Identificador del rol a actualizar.
+     * @param rol Objeto RolDTO con los nuevos datos.
+     * @return El rol actualizado, o null si no se encontró el rol.
+     */
     @PutMapping("/roles/{id}")
     public RolDTO actualizarRol(@RequestBody RolDTO rol, @PathVariable Integer id) {
         RolDTO objRol = null;
@@ -50,7 +71,11 @@ public class RolRestController {
             objRol = rolService.update(id, rol);
         return objRol;
     }
-
+    /**
+     * Elimina un rol por su ID.
+     * @param id Identificador del rol a eliminar.
+     * @return true si el rol fue eliminado, false si no se encontró el rol.
+     */
     @DeleteMapping("/roles/{id}")
     public Boolean eliminarRol(@PathVariable Integer id){
         Boolean bandera = false;

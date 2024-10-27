@@ -1,3 +1,8 @@
+/**
+ * Data Transfer Object (DTO) para representar una Conferencia.
+ * Esta clase contiene información detallada de una conferencia,
+ * incluyendo su identificador, nombre, fechas de inicio y fin, y ubicación.
+ */
 package co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.UsuariosConConferenciasDTO;
 
 import java.time.LocalDate;
@@ -15,7 +20,9 @@ public class ConferenciaDTO {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String ubicacion;
-
+    /**
+     * Constructor sin argumentos.
+     */
     public ConferenciaDTO(){
     
     }

@@ -1,3 +1,7 @@
+/**
+ * Data Transfer Object (DTO) para representar un Usuario.
+ * Contiene el identificador, nombre, apellido, correo y rol del usuario.
+ */
 package co.edu.unicauca.apiusuarios.core.fachadaServices.DTO.CRUDUsuariosDTO;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +15,9 @@ public class UsuarioDTO {
     private String apellido;
     private String correo;
     private RolDTO rol;
-
+    /**
+     * Constructor sin argumentos.
+     */
     public UsuarioDTO() {
 
     }

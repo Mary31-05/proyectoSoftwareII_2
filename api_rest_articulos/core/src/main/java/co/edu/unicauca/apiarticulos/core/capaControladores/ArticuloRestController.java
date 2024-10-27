@@ -26,16 +26,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ArticuloRestController {
     @Autowired
 	private IArticuloService ArticuloService;
+    /**
+     * Endpoint inicial de la API.
+     * @return Mensaje de bienvenida.
+     */
 
 	@GetMapping("/")
     public String home() {
         return "Bienvenido a la API de Artículos!";
     }
+     /**
+     * Lista todos los artículos disponibles.
+     * @return Lista de `ArticuloDTO` que representa todos los artículos.
+     */
 	
     @GetMapping("/articulos")
     public List<ArticuloDTO> listarArticulos() {
 		return ArticuloService.findAll();
     }
+    /**
+     * Busca un artículo por ID.
+     * @param id Identificador único del artículo.
+     * @return El `ArticuloDTO` correspondiente al ID o `null` si no existe.
+     */
 
     @GetMapping("/articulos/{id}")
 	public ArticuloDTO consultarArticulo(@PathVariable Integer id) {
@@ -43,14 +56,24 @@ public class ArticuloRestController {
 		objArticulo = ArticuloService.findById(id);
 		return objArticulo;
 	}
-    
+    /**
+     * Crea un nuevo artículo.
+     * @param articulo Objeto `ArticuloDTO` con la información del artículo.
+     * @param idUsuario ID del usuario que crea el artículo.
+     * @return El artículo creado como `ArticuloDTO`.
+     */
     @PostMapping("/articulos")
 	public ArticuloDTO crearArticulo(@RequestBody ArticuloDTO articulo, @RequestParam Integer idUsuario) {
 		ArticuloDTO objArticulo = null;
 		objArticulo = ArticuloService.save(articulo, idUsuario);
 		return objArticulo;
 	}
-    
+     /**
+     * Actualiza la información de un artículo existente.
+     * @param id Identificador único del artículo.
+     * @param articulo Objeto `ArticuloDTO` con la nueva información.
+     * @return `ResponseEntity` con el artículo actualizado o `NOT_FOUND` si el artículo no existe.
+     */
     @PutMapping("/articulos/{id}")
     public ResponseEntity<ArticuloDTO> actualizarArticulo(@PathVariable Integer id, @RequestBody ArticuloDTO articulo) {
         ArticuloDTO actualizado = ArticuloService.update(id, articulo);
@@ -60,6 +83,11 @@ public class ArticuloRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+    /**
+     * Elimina un artículo por ID.
+     * @param id Identificador único del artículo.
+     * @return `ResponseEntity` con `true` si el artículo se eliminó, `false` si no existe.
+     */
     
     @DeleteMapping("/articulos/{id}")
     public ResponseEntity<Boolean> eliminarArticulo(@PathVariable Integer id) {
@@ -71,7 +99,11 @@ public class ArticuloRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
-
+    /**
+     * Verifica si un artículo existe por ID.
+     * @param id Identificador único del artículo.
+     * @return `true` si el artículo existe, `false` si no.
+     */
     @GetMapping("/articulos/exist/{id}")
     public Boolean existeArticulo(@PathVariable Integer id) {
         return ArticuloService.exist(id) != null;

@@ -6,22 +6,37 @@ import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.apiarticulos.core.capaAccesoADatos.models.ArticuloEntity;
 import co.edu.unicauca.apiarticulos.core.fachadaServices.DTO.ConferenciaDTO;
-
+/**
+ * Repositorio para gestionar los datos de los artículos.
+ * Proporciona métodos para realizar operaciones CRUD en la lista de artículos,
+ * incluyendo la búsqueda, verificación de existencia, adición y eliminación de artículos.
+ */
 @Repository
 public class ArticuloRepository {
-
+    /**
+     * Lista en memoria que simula la base de datos para almacenar artículos.
+     */
     private ArrayList<ArticuloEntity> listaDeArticulos;
-
+    /**
+     * Constructor que inicializa la lista de artículos y carga algunos ejemplos.
+     */
     public ArticuloRepository() {
         this.listaDeArticulos = new ArrayList<ArticuloEntity>();
         CargarArticulos();
     }
-
+    /**
+     * Obtiene la lista de todos los artículos.
+     * @return Lista de ArticuloEntity.
+     */
     public List<ArticuloEntity> findAll() {
         System.out.println("Invocando a listarArticulos");
         return this.listaDeArticulos;
     }
-
+    /**
+     * Busca un artículo por su ID.
+     * @param id Identificador del artículo.
+     * @return ArticuloEntity si es encontrado, de lo contrario null.
+     */
     public ArticuloEntity findById(Integer id) {
         System.out.println("Invocando a consultar un Articulo");
         ArticuloEntity objArticulo = null;
@@ -35,7 +50,11 @@ public class ArticuloRepository {
 
         return objArticulo;
     }
-
+    /**
+     * Verifica si existe un artículo en la lista por su ID.
+     * @param id Identificador del artículo.
+     * @return true si el artículo existe, false en caso contrario.
+     */
     public boolean existeArticulo(Integer id) {
         for (ArticuloEntity articulo : listaDeArticulos) {
             if (articulo.getId().equals(id)) {
@@ -44,7 +63,7 @@ public class ArticuloRepository {
         }
         return false;
     }
-
+   
     public ArticuloEntity exist(Integer id) {
         System.out.println("Invocando a consultar un Articulo");
 
@@ -63,7 +82,11 @@ public class ArticuloRepository {
 
         return objArticulo;
     }
-
+    /**
+     * Guarda un nuevo artículo en la lista.
+     * @param articulo ArticuloEntity a ser guardado.
+     * @return El artículo guardado si se agrega exitosamente, de lo contrario null.
+     */
     public ArticuloEntity save(ArticuloEntity articulo) {
         System.out.println("Invocando a almacenar un articulo");
         ArticuloEntity objArticulo = null;
@@ -73,6 +96,12 @@ public class ArticuloRepository {
 
         return objArticulo;
     }
+    /**
+     * Actualiza un artículo existente en la lista.
+     * @param id ID del artículo a actualizar.
+     * @param articulo ArticuloEntity con los nuevos datos.
+     * @return ArticuloEntity actualizado, o null si no se encontró el artículo.
+     */
 
     public ArticuloEntity update(Integer id, ArticuloEntity articulo) {
         System.out.println("Invocando a actualizar un articulo");
@@ -88,7 +117,11 @@ public class ArticuloRepository {
 
         return objArticulo;
     }
-
+    /**
+     * Elimina un artículo de la lista por su ID.
+     * @param id Identificador del artículo a eliminar.
+     * @return true si el artículo fue eliminado exitosamente, false si no se encontró.
+     */
     public boolean delete(Integer id) {
         System.out.println("Invocando a eliminar un articulo");
         boolean bandera = false;
@@ -104,6 +137,9 @@ public class ArticuloRepository {
         return bandera;
     }
 
+    /**
+     * Método privado que carga algunos artículos de ejemplo.
+     */
     private void CargarArticulos() {
         ArrayList<Integer> listaAutores1 = new ArrayList<>();
         listaAutores1.add(3);

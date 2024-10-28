@@ -105,13 +105,22 @@ public class ArticuloRepository {
     }
 
     private void CargarArticulos() {
-        ArticuloEntity objArticulo1 = new ArticuloEntity(1, "IA en la actualidad", "Resumen del artículo sobre IA", "IA, Tecnología, Futuro", new ArrayList<>(), new ConferenciaDTO(1));
+        ArrayList<Integer> listaAutores1 = new ArrayList<>();
+        listaAutores1.add(3);
+        
+
+        ArticuloEntity objArticulo1 = new ArticuloEntity(1, "IA en la actualidad", "Resumen del artículo sobre IA", "IA, Tecnología, Futuro", listaAutores1, new ConferenciaDTO(1));
         this.listaDeArticulos.add(objArticulo1);
 
-        ArticuloEntity objArticulo2 = new ArticuloEntity(2, "Ingeniería de software", "Resumen del artículo sobre ingeniería de software", "Software, Ingeniería, Desarrollo", new ArrayList<>(), new ConferenciaDTO(2));
+        ArrayList<Integer> listaAutores2 = new ArrayList<>();
+        listaAutores2.add(5);
+        ArticuloEntity objArticulo2 = new ArticuloEntity(2, "Ingeniería de software", "Resumen del artículo sobre ingeniería de software", "Software, Ingeniería, Desarrollo", listaAutores2, new ConferenciaDTO(2));
         this.listaDeArticulos.add(objArticulo2);
 
-        ArticuloEntity objArticulo3 = new ArticuloEntity(3, "Tecnología", "Resumen del artículo sobre tecnología", "Tecnología, Innovación", new ArrayList<>(), new ConferenciaDTO(3));
+        ArrayList<Integer> listaAutores3 = new ArrayList<>();
+        listaAutores3.add(6);
+        listaAutores3.add(3);
+        ArticuloEntity objArticulo3 = new ArticuloEntity(3, "Tecnología", "Resumen del artículo sobre tecnología", "Tecnología, Innovación", listaAutores3, new ConferenciaDTO(3));
         this.listaDeArticulos.add(objArticulo3);
     }
 

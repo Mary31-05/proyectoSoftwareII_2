@@ -48,6 +48,21 @@ public class ConferenciaRepository {
         }
         return objConferencia;
     }
+
+	public ConferenciaEntity findByNombre(String nombre) {
+		System.out.println("Invocando a consultar una conferencia por nombre");
+		ConferenciaEntity objConferencia = null;
+	
+		for (ConferenciaEntity conferencia : listaDeConferencias) {
+			// Cambia la comparación para usar el nombre de la conferencia
+			if (conferencia.getNombre().equalsIgnoreCase(nombre)) {
+				objConferencia = conferencia;
+				break;
+			}
+		}
+		return objConferencia;
+	}
+	
 	/**
      * Guarda una nueva conferencia en la lista.
      *

@@ -123,6 +123,12 @@ public class UsuarioRepository {
         UsuarioEntity usuario3 = new UsuarioEntity(3, "Luis", "Martínez", "luis.martinez@example.com", "contraseña3", new RolEntity(3, "AUTOR"));
         this.listaDeUsuarios.add(usuario3);
 
+        UsuarioEntity usuario5 = new UsuarioEntity(5, "Santiago", "Diaz", "luis.diaz@example.com", "contraseña5", new RolEntity(3, "AUTOR"));
+        this.listaDeUsuarios.add(usuario5);
+
+        UsuarioEntity usuario6 = new UsuarioEntity(6, "Juana", "Diaz", "juana.diaz@example.com", "contraseña6", new RolEntity(3, "AUTOR"));
+        this.listaDeUsuarios.add(usuario6);
+
         UsuarioEntity usuario4 = new UsuarioEntity(4, "María", "Hernández", "maria.hernandez@example.com", "contraseña4", new RolEntity(4, "PARTICIPANTE"));
         this.listaDeUsuarios.add(usuario4);       
     }
